@@ -1,4 +1,4 @@
-public class Ticket {
+public class Ticket extends Item {
 
     private Theatre theater;
     private Film film;

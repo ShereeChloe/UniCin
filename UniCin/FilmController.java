@@ -1,3 +1,6 @@
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.util.ArrayList;
 
 /**
@@ -8,16 +11,37 @@ public class FilmController {
     private ArrayList<Film> films = new ArrayList<>();
 
     public FilmController() {
+
+        //films.add(f1);
+        //addFilm(f3);
+
+        FilmData fd = new FilmData();
+        films = fd.getFilms();
+
+//        Film f1 = new Film();
+//        for(Film film : films){
+//            if(film.getGenre1().equals(f1.getGenre1()) && !film.equals(f1)){
+//                //print to screen in some respect
+//                }
+//        }
+//
     }
 
-    private void addFilm(Film film) {
-        films.add(film);
-    }
+   // public void addFilm(Film film) {
+     //   films.add(film);
+    //}
 
-    private void printFilms() {
+    public void printFilms() {
         for (Film film : films) {
             System.out.println(film);
         }
     }
 
+    public void addFilm(Film film) {
+        films.add(film);
+    }
+
+    public ObservableList<Film> getFilms() {
+        return FXCollections.observableArrayList(films);
+    }
 }
