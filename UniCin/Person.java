@@ -4,16 +4,16 @@
 public class Person {
 
     private String name;
-    private int age;
+    private String dob;
     private String emailAddress;
 
     public Person(){
 
     }
 
-    public Person(String name, int age, String emailAddress) {
+    public Person(String name, String dob, String emailAddress) {
         this.name = name;
-        this.age = age;
+        this.dob = dob;
         this.emailAddress = emailAddress;
     }
 
@@ -21,11 +21,12 @@ public class Person {
         return name;
     }
 
-    public int getAge() {
-        return age;
+    public String getDob() {
+        return dob;
     }
 
     public String getEmailAddress() {
         return emailAddress;
     }
+
 }

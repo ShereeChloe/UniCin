@@ -1,12 +1,21 @@
-public class Main {
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+
+public class Main extends Application {
+
+    @Override
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getResource("HomePage.fxml"));
+        primaryStage.setTitle("Hello World");
+        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.show();
+    }
+
 
     public static void main(String[] args) {
-        FilmController fc = new FilmController();
-        Film f1 = new Film("The Lord of the Rings: The Fellowshipe of the Ring", "PG-13", 3.00,
-                "178 minutes", "2001", "Adventure", "Drama", "Fantasy",
-                8.8);
-
-        fc.addFilm(f1);
-
+        launch(args);
     }
 }

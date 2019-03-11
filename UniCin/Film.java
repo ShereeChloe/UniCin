@@ -58,4 +58,19 @@ public class Film {
     public double getRating() {
         return rating;
     }
+
+    @Override
+    public String toString() {
+        return "Film{" +
+                "title='" + title + '\'' +
+                ", certificate='" + certificate + '\'' +
+                ", price=" + price +
+                ", runtime='" + runtime + '\'' +
+                ", releaseYear='" + releaseYear + '\'' +
+                ", genre1='" + genre1 + '\'' +
+                ", genre2='" + genre2 + '\'' +
+                ", genre3='" + genre3 + '\'' +
+                ", rating=" + rating +
+                '}';
+    }
 }
