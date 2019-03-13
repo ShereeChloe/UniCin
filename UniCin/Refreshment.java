@@ -1,14 +1,21 @@
-public class Refreshment {
+public class Refreshment extends Item{
 
     private String drink;
     private String snack;
 
-    public Refreshment(String drink) {
+    public Refreshment(String name, double price, String drink, String snack) {
+        super(name, price);
         this.drink = drink;
+        this.snack = snack;
     }
 
-    public Refreshment(String snack, String drink){
-        this.snack = snack;
-        this.drink = drink;
+    public String getDrink() {
+        return drink;
     }
+
+    public String getSnack() {
+        return snack;
+    }
+
+
 }
