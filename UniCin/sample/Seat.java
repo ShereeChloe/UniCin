@@ -1,3 +1,5 @@
+package sample;
+
 public class Seat {
 
     private int seatNumber;

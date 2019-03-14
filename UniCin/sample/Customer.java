@@ -1,8 +1,13 @@
+package sample;
+
+import java.util.Date;
+
 /**
  * Created by u1257802 on 07/03/2019.
  */
 public class Customer extends Person{
 
+    private Customer cust;
     private int customerID;
     private String temporaryCustomerID;
     private boolean loyaltyMember;
@@ -11,9 +16,9 @@ public class Customer extends Person{
     //private static int nextUniqueId = 0;
 
 
-    public Customer(String name, String dob, String emailAddress, int customerID, String temporaryCustomerID,
-                    boolean loyaltyMember, boolean joinLoyaltyScheme, int loyaltyPointsNumber) {
-        super(name, dob, emailAddress);
+    public Customer(String firstName, String lastName, Date dob, String emailAddress, int customerID,
+                    String temporaryCustomerID, boolean loyaltyMember, boolean joinLoyaltyScheme, int loyaltyPointsNumber) {
+        super(firstName, lastName, dob, emailAddress);
         this.customerID = customerID;
         this.temporaryCustomerID = temporaryCustomerID;
         this.loyaltyMember = loyaltyMember;
@@ -24,6 +29,8 @@ public class Customer extends Person{
     public int getCustomerID() {
         return customerID;
     }
+
+    //void setCu
 
     public String getTemporaryCustomerID() {
         return temporaryCustomerID;

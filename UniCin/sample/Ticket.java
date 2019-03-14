@@ -1,3 +1,5 @@
+package sample;
+
 public class Ticket extends Item {
 
     private Theatre theater;

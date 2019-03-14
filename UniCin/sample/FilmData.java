@@ -1,5 +1,4 @@
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+package sample;
 
 import java.util.ArrayList;
 

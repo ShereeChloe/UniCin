@@ -1,3 +1,5 @@
+package sample;
+
 public class Refreshment extends Item{
 
     private String drink;

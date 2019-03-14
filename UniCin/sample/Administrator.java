@@ -1,3 +1,7 @@
+package sample;
+
+import java.util.Date;
+
 /**
  * Created by u1257802 on 11/03/2019.
  */
@@ -6,8 +10,9 @@ public class Administrator extends Person {
     private int adminId;
     private String payGrade;
 
-    public Administrator(String name, String dob, String emailAddress, int adminId, String payGrade) {
-        super(name, dob, emailAddress);
+    public Administrator(String firstName, String lastName, Date dob, String emailAddress,
+                         int adminId, String payGrade) {
+        super(firstName, lastName, dob, emailAddress);
         this.adminId = adminId;
         this.payGrade = payGrade;
     }

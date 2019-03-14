@@ -1,3 +1,5 @@
+package sample;
+
 public class Theatre {
 
     private int seats;
