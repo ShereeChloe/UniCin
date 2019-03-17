@@ -31,6 +31,19 @@ public class FilmController {
     public void addFilm(Film film) {
         films.add(film);
     }
+    public ArrayList<Film> filterFilmsByGenre(ArrayList<Film> availableFilms ,String genre)
+    {
+        ArrayList<Film> matchingFilms = new ArrayList<>();
+
+        for (Film film: availableFilms) {
+            if (film.getGenres().contains(genre))
+            {
+                matchingFilms.add(film);
+            }
+        }
+
+        return matchingFilms;
+    }
 
     public ObservableList<Film> getFilms() {
         return FXCollections.observableArrayList(films);

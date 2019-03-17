@@ -6,13 +6,26 @@ public class Theatre {
     private int bookedSeats;
     private int theatreNumber;
     private String theatreName;
-    private int seatAvailability;
 
-    public void Theatre(String theatreName, int theatreNumber, int seats){
+    public Theatre()
+    {
+
+    }
+
+    public Theatre(String theatreName, int theatreNumber, int seats){
         this.seats = seats;
         this.theatreNumber = theatreNumber;
         this.theatreName = theatreName;
-        this.seatAvailability = seatAvailability;
+    }
+
+    public int availableSeats()
+    {
+        return seats - bookedSeats;
+    }
+
+    public boolean fullyBooked()
+    {
+        return bookedSeats == seats;
     }
 
     public int getSeats(){
@@ -27,17 +40,19 @@ public class Theatre {
         return theatreName;
     }
 
-    public int getSeatAvailability() {
-        return seatAvailability;
+    public void setSeats(int seats) {
+        this.seats = seats;
     }
 
-    public boolean remainderSeats (int bookedSeats) {
-        if (bookedSeats > 0) {
-            this.seatAvailability -= bookedSeats;
-            return true;
-        }
-        return false;
+    public void setBookedSeats(int bookedSeats) {
+        this.bookedSeats = bookedSeats;
     }
 
+    public void setTheatreNumber(int theatreNumber) {
+        this.theatreNumber = theatreNumber;
+    }
 
+    public void setTheatreName(String theatreName) {
+        this.theatreName = theatreName;
+    }
 }

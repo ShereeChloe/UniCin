@@ -1,5 +1,6 @@
 package sample;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -10,7 +11,7 @@ public class Administrator extends Person {
     private int adminId;
     private String payGrade;
 
-    public Administrator(String firstName, String lastName, Date dob, String emailAddress,
+    public Administrator(String firstName, String lastName, LocalDateTime dob, String emailAddress,
                          int adminId, String payGrade) {
         super(firstName, lastName, dob, emailAddress);
         this.adminId = adminId;
@@ -32,4 +33,6 @@ public class Administrator extends Person {
     public void setPayGrade(String payGrade) {
         this.payGrade = payGrade;
     }
+
+
 }

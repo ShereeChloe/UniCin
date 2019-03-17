@@ -1,28 +1,36 @@
 package sample;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Film {
 
     private String title;
     private String certificate;
     private double price;
     private String runtime;
-    private String releaseYear;
-    private String genre1;
-    private String genre2;
-    private String genre3;
+    private int releaseYear;
+    private ArrayList<String> genres;
     private double rating;
+    private int filmAge;
 
-    public Film(String title, String certificate, double price, String runtime, String realeaseYear, String genre1,
-                String genre2, String genre3, double rating) {
+    private enum Genre
+    {
+        ACTION,
+        ADVENTURE
+    }
+
+    public Film(String title, String certificate, double price, String runtime, int realeaseYear, ArrayList<String> genres, double rating) {
         this.title = title;
         this.certificate = certificate;
         this.price = price;
         this.runtime = runtime;
         this.releaseYear = realeaseYear;
-        this.genre1 = genre1;
-        this.genre2 = genre2;
-        this.genre3 = genre3;
+        this.genres = genres;
         this.rating = rating;
+
+        filmAge = getAge();
     }
 
     public String getTitle() {
@@ -34,45 +42,45 @@ public class Film {
     }
 
     public double getPrice() {
-        return price;
+
+        if (filmAge <= 1)
+        {
+            return 10.0;
+        }
+        else if (filmAge <= 5)
+        {
+            return 5.0;
+        }
+        else
+        {
+            return 2.0;
+        }
     }
+
+    private int getAge()
+    {
+      int year = Calendar.getInstance().get(Calendar.YEAR);
+      return year - releaseYear;
+    }
+
 
     public String getRuntime() {
         return runtime;
     }
 
-    public String getReleaseYear() {
+    public int getReleaseYear() {
         return releaseYear;
     }
 
-    public String getGenre1() {
-        return genre1;
-    }
-
-    public String getGenre2() {
-        return genre2;
-    }
-
-    public String getGenre3() {
-        return genre3;
+    public ArrayList<String> getGenres() {
+        return genres;
     }
 
     public double getRating() {
         return rating;
     }
 
-    @Override
-    public String toString() {
-        return "Film{" +
-                "title='" + title + '\'' +
-                ", certificate='" + certificate + '\'' +
-                ", price=" + price +
-                ", runtime='" + runtime + '\'' +
-                ", releaseYear='" + releaseYear + '\'' +
-                ", genre1='" + genre1 + '\'' +
-                ", genre2='" + genre2 + '\'' +
-                ", genre3='" + genre3 + '\'' +
-                ", rating=" + rating +
-                '}';
-    }
+
+
+
 }

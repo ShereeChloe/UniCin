@@ -1,5 +1,6 @@
 package sample;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 /**
@@ -16,8 +17,9 @@ public class Customer extends Person{
     //private static int nextUniqueId = 0;
 
 
-    public Customer(String firstName, String lastName, Date dob, String emailAddress, int customerID,
-                    String temporaryCustomerID, boolean loyaltyMember, boolean joinLoyaltyScheme, int loyaltyPointsNumber) {
+    public Customer(String firstName, String lastName, LocalDateTime dob, String emailAddress, int customerID,
+                    String temporaryCustomerID, boolean loyaltyMember, boolean joinLoyaltyScheme,
+                    int loyaltyPointsNumber) {
         super(firstName, lastName, dob, emailAddress);
         this.customerID = customerID;
         this.temporaryCustomerID = temporaryCustomerID;

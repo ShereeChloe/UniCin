@@ -1,6 +1,9 @@
 package sample;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
 /**
  * Created by u1257802 on 07/03/2019.
@@ -9,14 +12,14 @@ public class Person {
 
     private String firstName;
     private String lastName;
-    private Date dob;
+    private LocalDateTime dob;
     private String emailAddress;
 
     public Person(){
 
     }
 
-    public Person(String firstName, String lastName, Date dob, String emailAddress) {
+    public Person(String firstName, String lastName, LocalDateTime dob, String emailAddress) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.dob = dob;
@@ -31,8 +34,14 @@ public class Person {
         return lastName;
     }
 
-    public Date getDob() {
+    public LocalDateTime getDob() {
         return dob;
+    }
+
+    public String returnFormattedDate()
+    {
+        DateTimeFormatter format = DateTimeFormatter.ofPattern("dd-MM-yyyy", Locale.ENGLISH);
+        return format.format(dob);
     }
 
     public String getEmailAddress() {
