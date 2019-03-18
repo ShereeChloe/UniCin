@@ -31,7 +31,6 @@ public class MainPage extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-
         LoginPage loginPage = new LoginPage(this);
         loginPage.setScene(loginPage.getScene());
 

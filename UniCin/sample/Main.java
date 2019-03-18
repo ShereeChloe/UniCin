@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 //
 //    @Override
 //    public void start(Stage primaryStage) throws Exception{
-//        Parent root = FXMLLoader.load(getClass().getResource("sample/FilmPage.fxml"));
+//        Parent root = FXMLLoader.load(getClass().getResource("sample/FilmDetailPage2.fxml"));
 //        primaryStage.setTitle("UniCin");
 //        primaryStage.setScene(new Scene(root, 800, 600));
 //        primaryStage.show();

@@ -31,6 +31,7 @@ public class FilmController {
     public void addFilm(Film film) {
         films.add(film);
     }
+
     public ArrayList<Film> filterFilmsByGenre(ArrayList<Film> availableFilms ,String genre)
     {
         ArrayList<Film> matchingFilms = new ArrayList<>();

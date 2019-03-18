@@ -14,18 +14,22 @@ public class Customer extends Person{
     private boolean loyaltyMember;
     private boolean joinLoyaltyScheme;
     private int loyaltyPointsNumber;
+    private String password;
+    private String username;
     //private static int nextUniqueId = 0;
 
 
     public Customer(String firstName, String lastName, LocalDateTime dob, String emailAddress, int customerID,
                     String temporaryCustomerID, boolean loyaltyMember, boolean joinLoyaltyScheme,
-                    int loyaltyPointsNumber) {
+                    int loyaltyPointsNumber, String password, String username) {
         super(firstName, lastName, dob, emailAddress);
         this.customerID = customerID;
         this.temporaryCustomerID = temporaryCustomerID;
         this.loyaltyMember = loyaltyMember;
         this.joinLoyaltyScheme = joinLoyaltyScheme;
         this.loyaltyPointsNumber = loyaltyPointsNumber;
+        this.password = password;
+        this.username = username;
     }
 
     public int getCustomerID() {
@@ -49,5 +53,9 @@ public class Customer extends Person{
     public int getLoyaltyPointsNumber() {
         return loyaltyPointsNumber;
     }
+
+    public String getPassword(){return password; }
+
+    public String getUsername(){return username; }
 
 }

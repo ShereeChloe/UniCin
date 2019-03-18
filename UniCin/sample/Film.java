@@ -14,6 +14,7 @@ public class Film {
     private ArrayList<String> genres;
     private double rating;
     private int filmAge;
+    private String description;
 
     private enum Genre
     {
@@ -21,7 +22,8 @@ public class Film {
         ADVENTURE
     }
 
-    public Film(String title, String certificate, double price, String runtime, int realeaseYear, ArrayList<String> genres, double rating) {
+    public Film(String title, String certificate, double price, String runtime, int realeaseYear,
+                ArrayList<String> genres, double rating, String description) {
         this.title = title;
         this.certificate = certificate;
         this.price = price;
@@ -29,6 +31,7 @@ public class Film {
         this.releaseYear = realeaseYear;
         this.genres = genres;
         this.rating = rating;
+        this.description = description;
 
         filmAge = getAge();
     }
@@ -43,13 +46,17 @@ public class Film {
 
     public double getPrice() {
 
-        if (filmAge <= 1)
-        {
-            return 10.0;
-        }
-        else if (filmAge <= 5)
+        if (filmAge <= 5)
         {
             return 5.0;
+        }
+        else if (filmAge <= 10)
+        {
+            return 4.0;
+        }
+        else if (filmAge <=15)
+        {
+            return 3.0;
         }
         else
         {
@@ -62,6 +69,7 @@ public class Film {
       int year = Calendar.getInstance().get(Calendar.YEAR);
       return year - releaseYear;
     }
+
 
 
     public String getRuntime() {
@@ -80,7 +88,11 @@ public class Film {
         return rating;
     }
 
+    private String getDescription(){return description; }
 
 
+    //public static void main(String[] args) {
+    //    System.out.println(this.getAge);
+    //}
 
 }

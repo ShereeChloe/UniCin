@@ -1,22 +1,30 @@
 package sample;
 
+import javafx.scene.control.Alert;
+
 public class Refreshment extends Item{
 
-    private String drink;
-    private String snack;
+    private boolean drink;
+    private boolean snack;
 
-    public Refreshment(String name, double price, String drink, String snack) {
+    public Refreshment(String name, double price, boolean drink, boolean snack) {
         super(name, price);
         this.drink = drink;
         this.snack = snack;
     }
 
-    public String getDrink() {
+    public boolean isDrink() {
         return drink;
     }
 
-    public String getSnack() {
+    public boolean isSnack() {
         return snack;
+    }
+
+    public void display(){
+        Alert confirmAddedToBasket = new Alert(Alert.AlertType.INFORMATION);
+        confirmAddedToBasket.setHeaderText("You have added:" + getName());
+        confirmAddedToBasket.showAndWait();
     }
 
 

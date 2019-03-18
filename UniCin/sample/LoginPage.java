@@ -5,14 +5,11 @@ import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -25,10 +22,14 @@ import javafx.stage.Stage;
 import javafx.scene.text.TextAlignment;
 import javafx.scene.input.MouseEvent;
 
+import static javafx.scene.control.Alert.*;
+
 /**
  * Created by u1257802 on 15/03/2019.
  */
 public class LoginPage extends Stage {
+
+    CustomerController cc = new CustomerController();
 
 
     public LoginPage(Application mainPage)
@@ -44,6 +45,7 @@ public class LoginPage extends Stage {
 //        loginGrid.setMaxHeight(800);
 
         Scene loginScene = new Scene(loginGrid,800,500, Color.POWDERBLUE);
+        loginScene.setFill(Color.POWDERBLUE);
 
         DropShadow ds = new DropShadow();
         ds.setOffsetY(3.0f);
@@ -66,6 +68,9 @@ public class LoginPage extends Stage {
         password.setTextFill(Color.web("#9C27B0"));
         PasswordField PasswordTextField = new PasswordField();
         Button guestButton = new Button("Continue as a Guest");
+        Button loginButton = new Button("Login");
+
+
 
         guestButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -78,13 +83,51 @@ public class LoginPage extends Stage {
             }
         });
 
+        loginButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                //System.out.println("in method");
+                // get username and pass from text boxes
+                // check if there is an text
+                // check if text matches hardcoded user
+//                close();
+//
+//                FilmPage filmPage = new FilmPage();
+//                filmPage.show();
+                //System.out.println(UsernameTextField.getText().equals("") + "1");
+
+                if (!UsernameTextField.getText().equals("") ){
+                    if (!PasswordTextField.getText().equals("")){
+                        //System.out.println(PasswordTextField.getText());
+                        //System.out.println(UsernameTextField.getText());
+
+                        //create the controller instance and call the login method
+                        Customer customer = cc.checkLoginDetails(UsernameTextField.getText(),
+                                PasswordTextField.getText());
+                        System.out.println(customer);
+
+                    }else{
+                        Alert passwordErrorAlert = new Alert(AlertType.ERROR);
+                        passwordErrorAlert.setHeaderText("Please Enter a Password");
+                        passwordErrorAlert.showAndWait();
+                        //System.out.println("Please Enter a Password.");
+                    }
+                }else{
+                    Alert usernameErrorAlert = new Alert(AlertType.ERROR);
+                    usernameErrorAlert.setHeaderText("Please Enter a UserName");
+                    usernameErrorAlert.showAndWait();
+                    //System.out.println("Please Enter a UserName.");
+                }
+            }
+        });
 
         loginGrid.add(loginSceneTitle,0,0,5,1);
         loginGrid.add(userName,0,2,1,1);
         loginGrid.add(UsernameTextField,2,2,4,1);
         loginGrid.add(password, 0,4,1,1);
         loginGrid.add(PasswordTextField,2,4,4,1);
-        loginGrid.add(guestButton,0,5,5,1 );
+        loginGrid.add(loginButton,0,5,5,1);
+        loginGrid.add(guestButton,1,5,5,1 );
 
         loginGrid.setGridLinesVisible(false);
 
