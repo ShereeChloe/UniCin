@@ -86,14 +86,17 @@ public class LoginPage extends Stage {
         loginButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                CustomerData cd = new CustomerData();
+                CustomerController cc = new CustomerController();
+                FilmPage fp = new FilmPage();
+                Customer c = new Customer("Sheree", "Edgar", null, null,
+                        0, null, false, false,
+                        10, "12345", "Sheree");
                 //System.out.println("in method");
                 // get username and pass from text boxes
                 // check if there is an text
                 // check if text matches hardcoded user
-//                close();
-//
-//                FilmPage filmPage = new FilmPage();
-//                filmPage.show();
+
                 //System.out.println(UsernameTextField.getText().equals("") + "1");
 
                 if (!UsernameTextField.getText().equals("") ){
@@ -104,7 +107,15 @@ public class LoginPage extends Stage {
                         //create the controller instance and call the login method
                         Customer customer = cc.checkLoginDetails(UsernameTextField.getText(),
                                 PasswordTextField.getText());
+
+                        close();
+                        fp.show();
+
                         System.out.println(customer);
+//                            if (UsernameTextField.getText().equals(c.getUsername())
+//                                    && PasswordTextField.getText().equals(c.getPassword()));
+//
+
 
                     }else{
                         Alert passwordErrorAlert = new Alert(AlertType.ERROR);
@@ -116,7 +127,9 @@ public class LoginPage extends Stage {
                     Alert usernameErrorAlert = new Alert(AlertType.ERROR);
                     usernameErrorAlert.setHeaderText("Please Enter a UserName");
                     usernameErrorAlert.showAndWait();
-                    //System.out.println("Please Enter a UserName.");
+                    System.out.println("Please Enter a UserName.");
+//                    FilmPage filmPage = new FilmPage();
+//                    filmPage.show();
                 }
             }
         });

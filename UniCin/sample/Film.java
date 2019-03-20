@@ -22,13 +22,13 @@ public class Film {
         ADVENTURE
     }
 
-    public Film(String title, String certificate, double price, String runtime, int realeaseYear,
+    public Film(String title, String certificate, double price, String runtime, int releaseYear,
                 ArrayList<String> genres, double rating, String description) {
         this.title = title;
         this.certificate = certificate;
         this.price = price;
         this.runtime = runtime;
-        this.releaseYear = realeaseYear;
+        this.releaseYear = releaseYear;
         this.genres = genres;
         this.rating = rating;
         this.description = description;

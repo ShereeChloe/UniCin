@@ -29,6 +29,10 @@ public class MainPage extends Application {
 
     private Stage currentStage;
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         LoginPage loginPage = new LoginPage(this);

@@ -36,8 +36,6 @@ public class Customer extends Person{
         return customerID;
     }
 
-    //void setCu
-
     public String getTemporaryCustomerID() {
         return temporaryCustomerID;
     }

@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -58,6 +59,10 @@ public class FilmPage extends Stage {
     private Button i8btn;
     private Button i9btn;
     private Button i10btn;
+
+    public Scene getFilmScene() {
+        return filmScene;
+    }
 
     public FilmPage()
     {
@@ -148,7 +153,8 @@ public class FilmPage extends Stage {
         i1btn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
+//                FilmDetailPage fdp = new FilmDetailPage();
+//                fdp.initOwner(primaryStage);
                 setScene(getfilmDetailScene);
             }
         });

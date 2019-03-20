@@ -13,6 +13,7 @@ import javafx.stage.Stage;
  */
 public class FilmDetailPage extends Stage{
 
+    private Stage fdStage;
     private Scene filmDetailScene;
     private AnchorPane filmDetails;
     private DropShadow ds;
