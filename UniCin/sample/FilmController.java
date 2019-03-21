@@ -13,12 +13,12 @@ public class FilmController {
     private ArrayList<Film> films = new ArrayList<>();
 
     public FilmController() {
-        System.out.println(films.size());
+        //System.out.println(films.size());
 
         FilmData fd = new FilmData();
         films = fd.getFilms();
 
-        System.out.println(films.size());
+        //System.out.println(films.size());
         //printFilms();
     }
 

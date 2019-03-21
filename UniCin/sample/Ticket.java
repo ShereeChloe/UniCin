@@ -22,6 +22,10 @@ public class Ticket extends Item {
         this.reserveTicket = reserveTicket;
     }
 
+    public Ticket(int ticketAmount){
+        this.ticketAmount = ticketAmount;
+    }
+
     public Theatre getTheatre() {
         return theatre;
     }

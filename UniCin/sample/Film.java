@@ -15,6 +15,7 @@ public class Film {
     private double rating;
     private int filmAge;
     private String description;
+    private String filmImageUrl;
 
     private enum Genre
     {
@@ -23,7 +24,7 @@ public class Film {
     }
 
     public Film(String title, String certificate, double price, String runtime, int releaseYear,
-                ArrayList<String> genres, double rating, String description) {
+                ArrayList<String> genres, double rating, String description, String filmImageUrl) {
         this.title = title;
         this.certificate = certificate;
         this.price = price;
@@ -32,6 +33,7 @@ public class Film {
         this.genres = genres;
         this.rating = rating;
         this.description = description;
+        this.filmImageUrl = filmImageUrl;
 
         filmAge = getAge();
     }
@@ -88,8 +90,15 @@ public class Film {
         return rating;
     }
 
-    private String getDescription(){return description; }
+    public String getDescription(){return description; }
 
+    public int getFilmAge() {
+        return filmAge;
+    }
+
+    public String getFilmImageUrl() {
+        return filmImageUrl;
+    }
 
     //public static void main(String[] args) {
     //    System.out.println(this.getAge);

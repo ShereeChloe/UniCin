@@ -28,6 +28,15 @@ import javafx.scene.input.MouseEvent;
 public class MainPage extends Application {
 
     private Stage currentStage;
+    private static Film film;
+
+    public static Film getFilm() {
+        return film;
+    }
+
+    public static void setFilm(Film film) {
+        MainPage.film = film;
+    }
 
     public static void main(String[] args) {
         launch(args);

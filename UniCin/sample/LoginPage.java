@@ -88,7 +88,6 @@ public class LoginPage extends Stage {
             public void handle(ActionEvent event) {
                 CustomerData cd = new CustomerData();
                 CustomerController cc = new CustomerController();
-                FilmPage fp = new FilmPage();
                 Customer c = new Customer("Sheree", "Edgar", null, null,
                         0, null, false, false,
                         10, "12345", "Sheree");
@@ -108,8 +107,8 @@ public class LoginPage extends Stage {
                         Customer customer = cc.checkLoginDetails(UsernameTextField.getText(),
                                 PasswordTextField.getText());
 
-                        close();
-                        fp.show();
+//                        close();
+//                        fp.show();
 
                         System.out.println(customer);
 //                            if (UsernameTextField.getText().equals(c.getUsername())
@@ -134,6 +133,7 @@ public class LoginPage extends Stage {
             }
         });
 
+        loginGrid.setStyle("-fx-background-color: #B0E0E6");
         loginGrid.add(loginSceneTitle,0,0,5,1);
         loginGrid.add(userName,0,2,1,1);
         loginGrid.add(UsernameTextField,2,2,4,1);
