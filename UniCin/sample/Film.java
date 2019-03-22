@@ -1,8 +1,10 @@
 package sample;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class Film {
 
@@ -100,6 +102,12 @@ public class Film {
         return filmImageUrl;
     }
 
+    public void printFormatted () {
+        NumberFormat gb = NumberFormat.getCurrencyInstance (Locale.UK);
+        final String formatString = "%-4s %-12s %8s";
+
+        System.out.println (String.format (formatString, this.id, this.name, gb.format (this.amountRaised)));
+    }
     //public static void main(String[] args) {
     //    System.out.println(this.getAge);
     //}

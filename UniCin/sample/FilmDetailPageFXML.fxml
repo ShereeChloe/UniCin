@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.FilmDetailPageFXML">
+   <children>
+      <ImageView fitHeight="275.0" fitWidth="213.0" layoutX="72.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" />
+      <Spinner layoutX="526.0" layoutY="388.0" />
+   </children>
+</AnchorPane>

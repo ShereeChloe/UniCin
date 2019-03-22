@@ -68,7 +68,9 @@ public class LoginPage extends Stage {
         password.setTextFill(Color.web("#9C27B0"));
         PasswordField PasswordTextField = new PasswordField();
         Button guestButton = new Button("Continue as a Guest");
+        guestButton.setEffect(ds);
         Button loginButton = new Button("Login");
+        loginButton.setEffect(ds);
 
 
 
