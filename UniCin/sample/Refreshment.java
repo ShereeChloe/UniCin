@@ -6,6 +6,7 @@ public class Refreshment extends Item{
 
     private boolean drink;
     private boolean snack;
+    private Utility u = new Utility();
 
     public Refreshment(String name, double price, boolean drink, boolean snack) {
         super(name, price);
@@ -27,5 +28,8 @@ public class Refreshment extends Item{
         confirmAddedToBasket.showAndWait();
     }
 
-
+    @Override
+    public String toString() {
+        return "Name: " + super.getName() + ", price: " + u.formatCurrency(super.getPrice());
+    }
 }

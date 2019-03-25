@@ -1,9 +1,10 @@
-package sample.Screens;
+package sample.Pages;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
 import sample.Film;
 import sample.Item;
+import sample.Theatre;
 
 import java.util.ArrayList;
 
@@ -15,6 +16,8 @@ public class MainPage extends Application {
     private Stage currentStage;
     private static Film film;
     private static ArrayList<Item> items;
+    private static int numberOfTickets;
+    private Theatre theatre;
 
     public static Film getFilm() {
         return film;
@@ -28,10 +31,24 @@ public class MainPage extends Application {
          this.items.add(item);
     }
 
-
+    public static void setItems(ArrayList<Item> items) {
+        MainPage.items = items;
+    }
 
     public static void setFilm(Film film) {
         MainPage.film = film;
+    }
+
+    public static int getNumberOfTickets() {
+        return numberOfTickets;
+    }
+
+    public static void setNumberOfTickets(int totalPrice) {
+        MainPage.numberOfTickets = totalPrice;
+    }
+
+    public Theatre getTheatre() {
+        return theatre;
     }
 
     public static void main(String[] args) {

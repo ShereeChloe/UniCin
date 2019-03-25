@@ -1,4 +1,4 @@
-package sample.Screens;
+package sample.Pages;
 
 
 import javafx.application.Application;
@@ -27,9 +27,6 @@ import static javafx.scene.control.Alert.*;
  */
 public class LoginPage extends Stage {
 
-    CustomerController cc = new CustomerController();
-
-
     public LoginPage(Application mainPage)
     {
 
@@ -38,11 +35,8 @@ public class LoginPage extends Stage {
         loginGrid.setHgap(10);
         loginGrid.setVgap(10);
         loginGrid.setPadding(new Insets(15,15,15,15));
-//        loginGrid.setMinSize(800,500);
-//        loginGrid.setMinHeight(500);
-//        loginGrid.setMaxHeight(800);
 
-        Scene loginScene = new Scene(loginGrid,800,500, Color.POWDERBLUE);
+        Scene loginScene = new Scene(loginGrid,850,500, Color.POWDERBLUE);
         loginScene.setFill(Color.POWDERBLUE);
 
         DropShadow ds = new DropShadow();
@@ -61,16 +55,18 @@ public class LoginPage extends Stage {
 
         Label userName = new Label("Enter Username");
         userName.setTextFill(Color.web("#9C27B0"));
+
         TextField UsernameTextField = new TextField();
         Label password = new Label("Enter Password");
+
         password.setTextFill(Color.web("#9C27B0"));
         PasswordField PasswordTextField = new PasswordField();
+
         Button guestButton = new Button("Continue as a Guest");
         guestButton.setEffect(ds);
+
         Button loginButton = new Button("Login");
         loginButton.setEffect(ds);
-
-
 
         guestButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -127,8 +123,6 @@ public class LoginPage extends Stage {
                     usernameErrorAlert.setHeaderText("Please Enter a UserName");
                     usernameErrorAlert.showAndWait();
                     System.out.println("Please Enter a UserName.");
-//                    FilmPage filmPage = new FilmPage();
-//                    filmPage.show();
                 }
             }
         });
@@ -145,8 +139,5 @@ public class LoginPage extends Stage {
         loginGrid.setGridLinesVisible(false);
 
         setScene(loginScene);
-
     }
-
-
 }

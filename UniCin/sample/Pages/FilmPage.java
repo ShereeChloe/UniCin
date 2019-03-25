@@ -1,8 +1,9 @@
-package sample.Screens;
+package sample.Pages;
 
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -29,8 +30,12 @@ public class FilmPage extends Stage {
     private FilmController fc = new FilmController();
     private ObservableList<Film> filmList;
 
-    public FilmPage()
-    {
+    public FilmPage(){
+        initialize();
+    }
+
+    @FXML
+    public void initialize() {
         filmList = fc.getFilms();
         System.out.println(filmList.size());
         filmGrid = new GridPane();
@@ -41,7 +46,7 @@ public class FilmPage extends Stage {
         filmGrid.setPadding(new Insets(15, 15, 15, 15));
         filmGrid.setStyle("-fx-background-color: #B0E0E6");
 
-        filmScene = new Scene(filmGrid, 800, 500, Color.POWDERBLUE);
+        filmScene = new Scene(filmGrid, 850, 500, Color.POWDERBLUE);
         filmScene.setFill(Color.POWDERBLUE);
 
         DropShadow ds = new DropShadow();
@@ -158,3 +163,4 @@ public class FilmPage extends Stage {
         System.out.println("button clicked");
     }
 }
+

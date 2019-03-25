@@ -9,6 +9,8 @@ import java.util.ArrayList;
  */
 public class RefreshmentData {
 
+
+
     private ArrayList<Refreshment> refreshments;
 
     public RefreshmentData(){
@@ -27,6 +29,8 @@ public class RefreshmentData {
         refreshments.add(new Refreshment("M&M's", 2.00, false, true));
 
     }
+
+
     public ArrayList<Refreshment> getrefreshments() {
         return refreshments;
     }

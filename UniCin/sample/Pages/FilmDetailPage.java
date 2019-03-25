@@ -1,4 +1,4 @@
-package sample.Screens;
+package sample.Pages;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -29,8 +29,8 @@ public class FilmDetailPage extends Stage{
     private Scene filmDetailScene;
     private DropShadow ds;
     private Film film;
-    private Utility utility = new Utility();
     private Item item;
+    private Utility utility = new Utility();
 
     public FilmDetailPage (Film film){
         this.film = film;
@@ -42,8 +42,16 @@ public class FilmDetailPage extends Stage{
     public void initialize() {
 
         GridPane root = new GridPane();
+        root.setStyle("-fx-background-color: #B0E0E6");
+        root.setPadding(new Insets(15,15,15,15));
+        root.setHgap(20);
+        root.setVgap(40);
+        root.getColumnConstraints().add(new ColumnConstraints(200));
+        root.getColumnConstraints().add(new ColumnConstraints(200));
+        root.getColumnConstraints().add(new ColumnConstraints(200));
+        root.getColumnConstraints().add(new ColumnConstraints(200));
 
-        filmDetailScene = new Scene(root, 800, 500);
+        filmDetailScene = new Scene(root, 850, 500);
 
         ds = new DropShadow();
         ds.setOffsetY(3.0f);
@@ -64,7 +72,8 @@ public class FilmDetailPage extends Stage{
         Text descriptionText = new Text();
         descriptionText.setText("Description:" + "\n" + film.getDescription() + "\n" + "\n" + "Certificate: "
                 + film.getCertificate() + "\n" + "\n" + "Runtime: " + film.getRuntime() + "\n" + "\n" + "Genres: "
-                + film.getGenres() + "\n" + "\n" + "Price: " + utility.formatCurrency(film.getPrice()));
+                + film.getGenres() + "\n" + "\n" + "Price: " + utility.formatCurrency(film.getPrice()) + "\n" + "\n" +
+        "");
         descriptionText.setFont(Font.font("Tahoma", FontWeight.NORMAL, 12));
         descriptionText.setWrappingWidth(200);
 
@@ -88,20 +97,26 @@ public class FilmDetailPage extends Stage{
         basketBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                Alert zeroAlert = new Alert(Alert.AlertType.ERROR);
+
+                if ((int)ticketSpinner.getValue() == 0) {
+                    zeroAlert.setHeaderText("Please select an amount higher than 0 to add to basket");
+                    zeroAlert.showAndWait();
+                }else{
+                    int numberOfTickets = ((int)ticketSpinner.getValue());
+
+                    MainPage.setNumberOfTickets(numberOfTickets);
+                    System.out.println(MainPage.getNumberOfTickets());
+                    System.out.println(MainPage.getNumberOfTickets() * MainPage.getFilm().getPrice());
+                }
                 System.out.println((int)ticketSpinner.getValue());
             Alert basketOptions = new Alert(Alert.AlertType.CONFIRMATION);
             basketOptions.setTitle("Add to Basket");
             basketOptions.setContentText("You will be directed to the Refreshment page when you click OK");
                 basketOptions.showAndWait();
 
-                Alert zeroAlert = new Alert(Alert.AlertType.ERROR);
-
-                if ((int)ticketSpinner.getValue() == 0) {
-                    zeroAlert.setHeaderText("Please select an amount higher than 0");
-                    zeroAlert.showAndWait();
-                }else{
-                    ((int)ticketSpinner.getValue() * film.getPrice() = );
-                }
+                (int)ticketSpinner.getValue()
+                        // need to get the films added into main array list
 
 //            ButtonType continueBrowsing = new ButtonType("Continue Browsing");
 //                ButtonType addRefreshments = new ButtonType("Choose Refreshments");
@@ -126,24 +141,35 @@ public class FilmDetailPage extends Stage{
         filmVb.setAlignment(Pos.CENTER);
         filmVb.getChildren().addAll(descriptionText);
 
-        root.setStyle("-fx-background-color: #B0E0E6");
-        root.setPadding(new Insets(15,15,15,15));
-        root.setHgap(20);
-        root.setVgap(40);
-        root.getColumnConstraints().add(new ColumnConstraints(200));
-        root.getColumnConstraints().add(new ColumnConstraints(200));
-        root.getColumnConstraints().add(new ColumnConstraints(200));
-        root.getColumnConstraints().add(new ColumnConstraints(200));
+        Button backBtn = new Button("Back to Film Options");
+        backBtn.setEffect(ds);
+
+        backBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Alert backConfirmation = new Alert(Alert.AlertType.CONFIRMATION);
+                backConfirmation.setTitle("No tickets will be added to basket");
+                backConfirmation.setHeaderText("Tickets will not be added to the basket unless the 'Add To Basket'" +
+                        " button is pressed");
+                backConfirmation.showAndWait();
+
+                close();
+
+                FilmPage fp = new FilmPage();
+                fp.show();
+                System.out.println("hello");
+            }
+        });
+
         root.add(filmTitle, 0,0,2,1);
         root.add(filmImageView, 0,1,1,1);
         root.add(filmVb, 1, 1, 1,2);
         root.add(ticketVb, 2,1,1,2);
-
+        root.add(backBtn,0,2,1,1);
 
         root.setGridLinesVisible(false);
 
         setScene(filmDetailScene);
         System.out.println("jdgf");
-
     }
 }
