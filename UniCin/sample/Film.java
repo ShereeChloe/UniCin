@@ -102,12 +102,7 @@ public class Film {
         return filmImageUrl;
     }
 
-    public void printFormatted () {
-        NumberFormat gb = NumberFormat.getCurrencyInstance (Locale.UK);
-        final String formatString = "%-4s %-12s %8s";
 
-        System.out.println (String.format (formatString, this.id, this.name, gb.format (this.amountRaised)));
-    }
     //public static void main(String[] args) {
     //    System.out.println(this.getAge);
     //}

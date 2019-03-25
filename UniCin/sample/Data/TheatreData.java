@@ -1,4 +1,6 @@
-package sample;
+package sample.Data;
+
+import sample.Theatre;
 
 import java.util.ArrayList;
 

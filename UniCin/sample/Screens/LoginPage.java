@@ -1,4 +1,4 @@
-package sample;
+package sample.Screens;
 
 
 import javafx.application.Application;
@@ -8,19 +8,17 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.scene.text.TextAlignment;
-import javafx.scene.input.MouseEvent;
+import sample.Controllers.CustomerController;
+import sample.Customer;
+import sample.Data.CustomerData;
 
 import static javafx.scene.control.Alert.*;
 

@@ -1,4 +1,6 @@
-package sample;
+package sample.Data;
+
+import sample.Refreshment;
 
 import java.util.ArrayList;
 

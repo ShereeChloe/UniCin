@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomePageController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.ScreenControllers.HomePageController">
    <children>
       <ListView fx:id="lvAllFilms" layoutX="57.0" layoutY="68.0" onMouseClicked="#lvAllFilmsClick"
                 prefHeight="200.0" prefWidth="200.0" />

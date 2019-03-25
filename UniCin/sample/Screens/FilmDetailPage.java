@@ -1,4 +1,4 @@
-package sample;
+package sample.Screens;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -17,8 +17,9 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-
-import java.util.Optional;
+import sample.Film;
+import sample.Item;
+import sample.Utility;
 
 /**
  * Created by u1257802 on 18/03/2019.
@@ -28,9 +29,8 @@ public class FilmDetailPage extends Stage{
     private Scene filmDetailScene;
     private DropShadow ds;
     private Film film;
-
-
-
+    private Utility utility = new Utility();
+    private Item item;
 
     public FilmDetailPage (Film film){
         this.film = film;
@@ -42,9 +42,6 @@ public class FilmDetailPage extends Stage{
     public void initialize() {
 
         GridPane root = new GridPane();
-        root.setPadding(new Insets(15,15,15,15));
-        root.setVgap(10);
-        root.setHgap(10);
 
         filmDetailScene = new Scene(root, 800, 500);
 
@@ -67,7 +64,7 @@ public class FilmDetailPage extends Stage{
         Text descriptionText = new Text();
         descriptionText.setText("Description:" + "\n" + film.getDescription() + "\n" + "\n" + "Certificate: "
                 + film.getCertificate() + "\n" + "\n" + "Runtime: " + film.getRuntime() + "\n" + "\n" + "Genres: "
-                + film.getGenres() + "\n" + "\n" + "Price: " + film.getPrice() );
+                + film.getGenres() + "\n" + "\n" + "Price: " + utility.formatCurrency(film.getPrice()));
         descriptionText.setFont(Font.font("Tahoma", FontWeight.NORMAL, 12));
         descriptionText.setWrappingWidth(200);
 
@@ -91,19 +88,33 @@ public class FilmDetailPage extends Stage{
         basketBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println((int)ticketSpinner.getValue());
             Alert basketOptions = new Alert(Alert.AlertType.CONFIRMATION);
-            basketOptions.setTitle("Additional Options");
-            basketOptions.setHeaderText("Where would you like to go next?");
-            basketOptions.setContentText("Choose your destination");
+            basketOptions.setTitle("Add to Basket");
+            basketOptions.setContentText("You will be directed to the Refreshment page when you click OK");
+                basketOptions.showAndWait();
 
-            basketOptions.showAndWait();
+                Alert zeroAlert = new Alert(Alert.AlertType.ERROR);
 
-            ButtonType continueBrowsing = new ButtonType("Continue Browsing");
-                ButtonType addRefreshments = new ButtonType("Choose Refreshments");
-                ButtonType goToBasket = new ButtonType("Go to Basket");
-                ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+                if ((int)ticketSpinner.getValue() == 0) {
+                    zeroAlert.setHeaderText("Please select an amount higher than 0");
+                    zeroAlert.showAndWait();
+                }else{
+                    ((int)ticketSpinner.getValue() * film.getPrice() = );
+                }
 
-                basketOptions.getButtonTypes().setAll(continueBrowsing, addRefreshments, goToBasket, cancel);
+//            ButtonType continueBrowsing = new ButtonType("Continue Browsing");
+//                ButtonType addRefreshments = new ButtonType("Choose Refreshments");
+//                ButtonType goToBasket = new ButtonType("Go to Basket");
+//                ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
+//
+//                basketOptions.getButtonTypes().setAll(continueBrowsing, addRefreshments, goToBasket, cancel);
+
+                close();
+                RefreshmentsPage rp = new RefreshmentsPage(item);
+                rp.show();
+
+                System.out.println("hello");
             }
         });
 
@@ -129,7 +140,7 @@ public class FilmDetailPage extends Stage{
         root.add(ticketVb, 2,1,1,2);
 
 
-        root.setGridLinesVisible(true);
+        root.setGridLinesVisible(false);
 
         setScene(filmDetailScene);
         System.out.println("jdgf");

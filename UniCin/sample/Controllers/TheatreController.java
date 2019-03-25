@@ -1,4 +1,6 @@
-package sample;
+package sample.Controllers;
+
+import sample.Theatre;
 
 import java.util.ArrayList;
 

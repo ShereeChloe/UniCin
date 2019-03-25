@@ -1,4 +1,7 @@
-package sample;
+package sample.Controllers;
+
+import sample.Customer;
+import sample.Data.CustomerData;
 
 import java.util.ArrayList;
 

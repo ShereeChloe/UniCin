@@ -1,4 +1,6 @@
-package sample;
+package sample.Data;
+
+import sample.Customer;
 
 import java.util.ArrayList;
 

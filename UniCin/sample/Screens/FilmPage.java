@@ -1,6 +1,5 @@
-package sample;
+package sample.Screens;
 
-import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -18,12 +17,12 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import javafx.scene.input.MouseEvent;
-import sun.applet.Main;
+import sample.Controllers.FilmController;
+import sample.Film;
 
 public class FilmPage extends Stage {
 
-    Cinema cinema;
+
     private GridPane filmGrid;
 
     private Scene filmScene;
@@ -35,7 +34,6 @@ public class FilmPage extends Stage {
         filmList = fc.getFilms();
         System.out.println(filmList.size());
         filmGrid = new GridPane();
-        cinema = new Cinema();
 
         filmGrid.setAlignment(Pos.CENTER);
         filmGrid.setHgap(15);

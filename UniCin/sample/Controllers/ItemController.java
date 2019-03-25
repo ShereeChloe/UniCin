@@ -1,7 +1,8 @@
-package sample;
+package sample.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import sample.Item;
 
 import java.util.ArrayList;
 
@@ -10,9 +11,13 @@ import java.util.ArrayList;
  */
 public class ItemController {
 
-    private ArrayList<Film> items = new ArrayList<>();
+    private ArrayList<Item> items = new ArrayList<>();
 
-    public ObservableList<Film> getItems() {
+    public ObservableList<Item> getItems() {
         return FXCollections.observableArrayList(items);
     }
+
+//    public static void main(String[] args) {
+//        System.out.println(this.getItems());
+//    }
 }

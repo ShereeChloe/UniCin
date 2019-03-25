@@ -1,10 +1,12 @@
-package sample;
+package sample.ScreenControllers;
 
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
+import sample.Controllers.FilmController;
+import sample.Film;
 
 /**
  * Created by u1257802 on 11/03/2019.

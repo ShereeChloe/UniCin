@@ -1,7 +1,9 @@
-package sample;
+package sample.Controllers;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import sample.Film;
+import sample.Data.FilmData;
 
 import java.util.ArrayList;
 
@@ -53,4 +55,6 @@ public class FilmController {
     public static void main(String[] args) {
         new FilmController();
     }
+
+
 }

@@ -1,4 +1,6 @@
-package sample;
+package sample.Data;
+
+import sample.Film;
 
 import java.util.ArrayList;
 import java.util.Arrays;
