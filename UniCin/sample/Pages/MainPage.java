@@ -2,6 +2,7 @@ package sample.Pages;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import sample.Customer;
 import sample.Film;
 import sample.Item;
 import sample.Theatre;
@@ -18,6 +19,7 @@ public class MainPage extends Application {
     private static ArrayList<Item> items;
     private static int numberOfTickets;
     private Theatre theatre;
+    private double totalPrice;
 
     public static Film getFilm() {
         return film;
@@ -41,6 +43,14 @@ public class MainPage extends Application {
 
     public static int getNumberOfTickets() {
         return numberOfTickets;
+    }
+
+    private int getTotalPrice(){
+        int total = 0;
+        for (Item item : MainPage.getItems()){
+            total += MainPage.getNumberOfTickets();
+        }
+        return total;
     }
 
     public static void setNumberOfTickets(int totalPrice) {

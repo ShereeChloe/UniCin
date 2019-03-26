@@ -101,9 +101,6 @@ public class RefreshmentsPage extends Stage {
                     pleaseSelect.setHeaderText("Please select an item to add to the basket");
                     pleaseSelect.showAndWait();
                 }
-
-
-
             }
         });
 
@@ -123,6 +120,10 @@ public class RefreshmentsPage extends Stage {
                     tempList.setItems(FXCollections.observableArrayList(tempObList));
                 }else{
                     System.out.println("Please select item");
+                    Alert pleaseSelect = new Alert(Alert.AlertType.ERROR);
+                    pleaseSelect.setTitle("No selection");
+                    pleaseSelect.setHeaderText("Please select an item to remove the basket");
+                    pleaseSelect.showAndWait();
                 }
             }
         });

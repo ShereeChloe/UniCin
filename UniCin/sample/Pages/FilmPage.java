@@ -108,51 +108,6 @@ public class FilmPage extends Stage {
 
         filmGrid.add(pickFilm, 0,5,5,1);
 
-//        button1.addEventHandler(MouseEvent.MOUSE_ENTERED,
-//                new EventHandler<MouseEvent>() {
-//                    @Override
-//                    public void handle(MouseEvent event) {
-//                        button1.setEffect(ds);
-//
-//                    }
-//                });
-//
-//        button1.addEventHandler(MouseEvent.MOUSE_EXITED,
-//                new EventHandler<MouseEvent>() {
-//                    @Override
-//                    public void handle(MouseEvent event) {
-//                        button1.setEffect(null);
-//                    }
-//                });
-//
-////        button1.addEventHandler(MouseEvent.MOUSE_CLICKED,
-////                new EventHandler<MouseEvent>() {
-////                    @Override
-////                    public void handle(MouseEvent event) {
-////                        FilmDetailPage fdp = new FilmDetailPage();
-////                        close();
-////                        button1.setOnMouseClicked(fdp);
-////                        fdp.show();
-////
-////                    }
-////                });
-//
-//        button1.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent event) {
-//                //get the selected film
-//
-//                //set thew selected film on Main using setter
-//
-//
-//                //then switch to new page
-//                close();
-//
-//                FilmDetailPage fdp = new FilmDetailPage();
-//                fdp.show();
-//            }
-//        });
-
         filmGrid.setGridLinesVisible(false);
 
         setScene(filmScene);

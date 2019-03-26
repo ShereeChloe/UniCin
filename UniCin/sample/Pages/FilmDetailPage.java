@@ -106,16 +106,18 @@ public class FilmDetailPage extends Stage{
                     int numberOfTickets = ((int)ticketSpinner.getValue());
 
                     MainPage.setNumberOfTickets(numberOfTickets);
+
                     System.out.println(MainPage.getNumberOfTickets());
                     System.out.println(MainPage.getNumberOfTickets() * MainPage.getFilm().getPrice());
+
                 }
                 System.out.println((int)ticketSpinner.getValue());
             Alert basketOptions = new Alert(Alert.AlertType.CONFIRMATION);
             basketOptions.setTitle("Add to Basket");
-            basketOptions.setContentText("You will be directed to the Refreshment page when you click OK");
+            basketOptions.setContentText("You will now be directed to the Refreshment page");
                 basketOptions.showAndWait();
 
-                (int)ticketSpinner.getValue()
+//                (int)ticketSpinner.getValue()
                         // need to get the films added into main array list
 
 //            ButtonType continueBrowsing = new ButtonType("Continue Browsing");

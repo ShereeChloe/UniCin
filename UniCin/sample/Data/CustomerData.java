@@ -16,13 +16,9 @@ public class CustomerData {
     customers.add(new Customer("Jonathan", "Franklin", null,
             "u123456@unimal.hud.ac.uk", 002, null, false,
             false,0, "67891", "Jean"));
-
-
     }
 
     public ArrayList<Customer> getCustomerData() {
         return customers;
     }
-
-
 }

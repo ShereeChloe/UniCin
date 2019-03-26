@@ -103,15 +103,17 @@ public class LoginPage extends Stage {
                         Customer customer = cc.checkLoginDetails(UsernameTextField.getText(),
                                 PasswordTextField.getText());
 
-//                        close();
-//                        fp.show();
-
                         System.out.println(customer);
-//                            if (UsernameTextField.getText().equals(c.getUsername())
-//                                    && PasswordTextField.getText().equals(c.getPassword()));
-//
-
-
+                        if (UsernameTextField.getText().equals(c.getUsername())
+                                && PasswordTextField.getText().equals(c.getPassword())) {
+                            close();
+                            FilmPage filmPage = new FilmPage();
+                            filmPage.show();
+                        }else{
+                            Alert invalidErrorAlert = new Alert(AlertType.ERROR);
+                            invalidErrorAlert.setHeaderText("The information entered does not match our records");
+                            invalidErrorAlert.showAndWait();
+                        }
                     }else{
                         Alert passwordErrorAlert = new Alert(AlertType.ERROR);
                         passwordErrorAlert.setHeaderText("Please Enter a Password");

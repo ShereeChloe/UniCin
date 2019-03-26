@@ -3,6 +3,7 @@ package sample.Controllers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import sample.Item;
+import sample.Pages.MainPage;
 import sample.Refreshment;
 
 import java.util.ArrayList;
@@ -29,5 +30,13 @@ public class ItemController {
 
     public ObservableList<Item> getItems() {
         return FXCollections.observableArrayList(refreshments);
+    }
+
+    private int getTotalPrice(){
+        int total = 0;
+        for (Item item : MainPage.getItems()){
+            total += MainPage.getNumberOfTickets();
+        }
+        return total;
     }
 }
