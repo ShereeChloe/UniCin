@@ -1,5 +1,8 @@
 package sample;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -20,11 +23,11 @@ public class Film {
     private String filmImageUrl;
     private int theatre;
 
-    private enum Genre
-    {
-        ACTION,
-        ADVENTURE
-    }
+//    private enum Genre
+//    {
+//        ACTION,
+//        ADVENTURE
+//    }
 
     public Film(String title, String certificate, double price, String runtime, int releaseYear,
                 ArrayList<String> genres, double rating, String description, String filmImageUrl, int theatre) {
@@ -38,8 +41,7 @@ public class Film {
         this.description = description;
         this.filmImageUrl = filmImageUrl;
         this.theatre = theatre;
-
-        filmAge = getAge();
+        this.filmAge = getAge();
     }
 
     public String getTitle() {
@@ -52,20 +54,16 @@ public class Film {
 
     public double getPrice() {
 
-        if (filmAge <= 5)
-        {
+        if (filmAge <= 5){
             return 5.0;
         }
-        else if (filmAge <= 10)
-        {
+        else if (filmAge <= 10){
             return 4.0;
         }
-        else if (filmAge <=15)
-        {
+        else if (filmAge <=15){
             return 3.0;
         }
-        else
-        {
+        else{
             return 2.0;
         }
     }
@@ -88,6 +86,10 @@ public class Film {
 
     public ArrayList<String> getGenres() {
         return genres;
+    }
+
+    public ObservableList<Item> getGenresOb() {
+        return FXCollections.observableArrayList();
     }
 
     public double getRating() {

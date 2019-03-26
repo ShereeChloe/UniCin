@@ -15,13 +15,8 @@ public class FilmController {
     private ArrayList<Film> films = new ArrayList<>();
 
     public FilmController() {
-        //System.out.println(films.size());
-
         FilmData fd = new FilmData();
         films = fd.getFilms();
-
-        //System.out.println(films.size());
-        //printFilms();
     }
 
     public void printFilms() {
@@ -34,7 +29,7 @@ public class FilmController {
         films.add(film);
     }
 
-    public ArrayList<Film> filterFilmsByGenre(ArrayList<Film> availableFilms ,String genre)
+    public ObservableList<Film> filterFilmsByGenre(ArrayList<Film> availableFilms ,String genre)
     {
         ArrayList<Film> matchingFilms = new ArrayList<>();
 
@@ -45,16 +40,14 @@ public class FilmController {
             }
         }
 
-        return matchingFilms;
+        return FXCollections.observableArrayList(matchingFilms);
     }
 
     public ObservableList<Film> getFilms() {
         return FXCollections.observableArrayList(films);
     }
 
-    public static void main(String[] args) {
-        new FilmController();
-    }
+
 
 
 }

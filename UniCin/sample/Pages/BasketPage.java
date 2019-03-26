@@ -97,16 +97,52 @@ public class BasketPage extends Stage {
                 backConfirmation.showAndWait();
 
                 close();
-
                 FilmPage fp = new FilmPage();
                 fp.show();
-                System.out.println("hello");
             }
         });
 
+        Button payByCashBtn = new Button("Pay By Cash");
+        payByCashBtn.setEffect(ds);
+
+        payByCashBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Alert payByCashConf = new Alert(Alert.AlertType.CONFIRMATION);
+                payByCashConf.setTitle("Pay By Cash");
+                payByCashConf.setHeaderText("Please go to the box office within the next 48 hours to pay" + "\n" +
+                        "Otherwise your order will be cancelled");
+                payByCashConf.showAndWait();
+
+                close();
+            }
+        });
+
+        Button payByCardBtn = new Button("Pay By Card");
+        payByCardBtn.setEffect(ds);
+
+        payByCardBtn.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                Alert payByCardConf = new Alert(Alert.AlertType.CONFIRMATION);
+                payByCardConf.setTitle("Pay By Card");
+                payByCardConf.setHeaderText("Please have your card ready to enter details on the next screen");
+                payByCardConf.showAndWait();
+
+                close();
+                CardPaymentPage cpp = new CardPaymentPage();
+                cpp.show();
+            }
+        });
+
+        VBox basketOptionsVbox = new VBox(15);
+        basketOptionsVbox.setAlignment(Pos.CENTER);
+        basketOptionsVbox.getChildren().addAll(backBtn, payByCashBtn, payByCardBtn);
+
         root.add(pageTitle,0,0,4,1);
         root.add(basketVbox,0,1,1,3);
-        root.add(backBtn, 2,2,1,1);
+        root.add(basketOptionsVbox, 2,3,1,1);
+
 
         setScene(basketScene);
     }

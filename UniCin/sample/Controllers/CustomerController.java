@@ -13,11 +13,8 @@ public class CustomerController {
     private ArrayList<Customer> customers = new ArrayList<>();
 
     public CustomerController(){
-        //System.out.println(customers.size());
-
         CustomerData cd = new CustomerData();
         customers = cd.getCustomerData();
-        //System.out.println(customers);
     }
 
     public Customer checkLoginDetails(String username, String password){

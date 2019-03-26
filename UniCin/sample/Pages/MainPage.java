@@ -18,12 +18,14 @@ public class MainPage extends Application {
     private static Film film;
     private static ArrayList<Item> items;
     private static int numberOfTickets;
-    private Theatre theatre;
+    private static Theatre theatre;
     private double totalPrice;
 
     public static Film getFilm() {
         return film;
     }
+
+    public static Theatre getTheatre(){return theatre; }
 
     public static ArrayList<Item> getItems() {
         return items;
@@ -55,10 +57,6 @@ public class MainPage extends Application {
 
     public static void setNumberOfTickets(int totalPrice) {
         MainPage.numberOfTickets = totalPrice;
-    }
-
-    public Theatre getTheatre() {
-        return theatre;
     }
 
     public static void main(String[] args) {

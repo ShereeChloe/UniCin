@@ -71,54 +71,48 @@ public class LoginPage extends Stage {
         guestButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
-                close();
-
-                FilmPage filmPage = new FilmPage();
-                filmPage.show();
+                Alert continueAsGuest = new Alert(AlertType.CONFIRMATION);
+                continueAsGuest.setHeaderText("You will continue as a Guest");
+                continueAsGuest.showAndWait();
+                if (continueAsGuest.getResult() == ButtonType.OK){
+                    close();
+                    FilmPage filmPage = new FilmPage();
+                    filmPage.show();
+                } else {
+                    continueAsGuest.close();
+                }
             }
         });
 
         loginButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                CustomerData cd = new CustomerData();
                 CustomerController cc = new CustomerController();
-                Customer c = new Customer("Sheree", "Edgar", null, null,
-                        0, null, false, false,
-                        10, "12345", "Sheree");
-                //System.out.println("in method");
-                // get username and pass from text boxes
-                // check if there is an text
-                // check if text matches hardcoded user
-
-                //System.out.println(UsernameTextField.getText().equals("") + "1");
 
                 if (!UsernameTextField.getText().equals("") ){
                     if (!PasswordTextField.getText().equals("")){
-                        //System.out.println(PasswordTextField.getText());
-                        //System.out.println(UsernameTextField.getText());
 
-                        //create the controller instance and call the login method
                         Customer customer = cc.checkLoginDetails(UsernameTextField.getText(),
                                 PasswordTextField.getText());
 
-                        System.out.println(customer);
-                        if (UsernameTextField.getText().equals(c.getUsername())
-                                && PasswordTextField.getText().equals(c.getPassword())) {
+                        if (UsernameTextField.getText().equals(customer.getUsername())
+                                && PasswordTextField.getText().equals(customer.getPassword())) {
+                            Alert validConfirmation = new Alert(AlertType.CONFIRMATION);
+                            validConfirmation.setHeaderText("You have Successfully logged into your account");
+                            validConfirmation.showAndWait();
                             close();
                             FilmPage filmPage = new FilmPage();
                             filmPage.show();
                         }else{
                             Alert invalidErrorAlert = new Alert(AlertType.ERROR);
-                            invalidErrorAlert.setHeaderText("The information entered does not match our records");
+                            invalidErrorAlert.setHeaderText("The information entered does not match our records" +
+                                    "\n" + "Please try again");
                             invalidErrorAlert.showAndWait();
                         }
                     }else{
                         Alert passwordErrorAlert = new Alert(AlertType.ERROR);
                         passwordErrorAlert.setHeaderText("Please Enter a Password");
                         passwordErrorAlert.showAndWait();
-                        //System.out.println("Please Enter a Password.");
                     }
                 }else{
                     Alert usernameErrorAlert = new Alert(AlertType.ERROR);

@@ -1,9 +1,11 @@
 package sample.Pages;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
+import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -17,8 +19,10 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import sample.Controllers.FilmController;
 import sample.Film;
 import sample.Item;
+import sample.Theatre;
 import sample.Utility;
 
 /**
@@ -29,8 +33,11 @@ public class FilmDetailPage extends Stage{
     private Scene filmDetailScene;
     private DropShadow ds;
     private Film film;
+    private Theatre theatre;
     private Item item;
     private Utility utility = new Utility();
+    private FilmController fc = new FilmController();
+    private ObservableList<Film> obSimilarFilms;
 
     public FilmDetailPage (Film film){
         this.film = film;
@@ -72,17 +79,18 @@ public class FilmDetailPage extends Stage{
         Text descriptionText = new Text();
         descriptionText.setText("Description:" + "\n" + film.getDescription() + "\n" + "\n" + "Certificate: "
                 + film.getCertificate() + "\n" + "\n" + "Runtime: " + film.getRuntime() + "\n" + "\n" + "Genres: "
-                + film.getGenres() + "\n" + "\n" + "Price: " + utility.formatCurrency(film.getPrice()) + "\n" + "\n" +
-        "");
+                + film.getGenres() + "\n" + "\n" + "Price: " + utility.formatCurrency(film.getPrice()) + "\n" + "\n" );
+      //  "Available Seats: " + theatre.getSeats());
         descriptionText.setFont(Font.font("Tahoma", FontWeight.NORMAL, 12));
         descriptionText.setWrappingWidth(200);
 
-        Label selectAmountLbl = new Label();
-        selectAmountLbl.setText("Select Amount of Tickets");
+        Label ticketsAvaialble = new Label("Available Tickets: ");
+        ticketsAvaialble.setFont(Font.font("Tahoma", FontWeight.BOLD, 12));
+
+        Label selectAmountLbl = new Label("Select Amount of Tickets");
         selectAmountLbl.setFont(Font.font("Tahoma", FontWeight.BOLD, 12));
 
-        Label maxAmountMes = new Label();
-        maxAmountMes.setText("Maximum of 20 tickets per booking");
+        Label maxAmountMes = new Label("Maximum of 20 tickets per booking");
         maxAmountMes.setFont(Font.font("Tahoma", FontWeight.NORMAL, 10));
 
         Spinner ticketSpinner = new Spinner();
@@ -117,16 +125,6 @@ public class FilmDetailPage extends Stage{
             basketOptions.setContentText("You will now be directed to the Refreshment page");
                 basketOptions.showAndWait();
 
-//                (int)ticketSpinner.getValue()
-                        // need to get the films added into main array list
-
-//            ButtonType continueBrowsing = new ButtonType("Continue Browsing");
-//                ButtonType addRefreshments = new ButtonType("Choose Refreshments");
-//                ButtonType goToBasket = new ButtonType("Go to Basket");
-//                ButtonType cancel = new ButtonType("Cancel", ButtonBar.ButtonData.CANCEL_CLOSE);
-//
-//                basketOptions.getButtonTypes().setAll(continueBrowsing, addRefreshments, goToBasket, cancel);
-
                 close();
                 RefreshmentsPage rp = new RefreshmentsPage(item);
                 rp.show();
@@ -135,6 +133,15 @@ public class FilmDetailPage extends Stage{
             }
         });
 
+        Text ticketAmount = new Text();
+
+//        ListView similarFilmsList = new ListView(fc.filterFilmsByGenre(fc.getFilms(), fc.getFilms(),));
+//        obSimilarFilms = ;
+//        similarFilmsList.setItems(obSimilarFilms);
+//        System.out.println(obSimilarFilms + " genres");
+//        similarFilmsList.setOrientation(Orientation.VERTICAL);
+//        similarFilmsList.setPrefSize(300, 250);
+
         VBox ticketVb = new VBox(10);
         ticketVb.setAlignment(Pos.CENTER);
         ticketVb.getChildren().addAll(selectAmountLbl, ticketSpinner, maxAmountMes, basketBtn);
@@ -142,6 +149,9 @@ public class FilmDetailPage extends Stage{
         VBox filmVb= new VBox(10);
         filmVb.setAlignment(Pos.CENTER);
         filmVb.getChildren().addAll(descriptionText);
+
+        VBox similarFilmsVb = new VBox();
+        similarFilmsVb.setAlignment(Pos.CENTER);
 
         Button backBtn = new Button("Back to Film Options");
         backBtn.setEffect(ds);
