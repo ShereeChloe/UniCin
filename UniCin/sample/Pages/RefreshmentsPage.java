@@ -5,9 +5,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -24,9 +26,11 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 import sample.Controllers.ItemController;
 import sample.Item;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 /**
@@ -53,10 +57,10 @@ public class RefreshmentsPage extends Stage {
         root.setStyle("-fx-background-color: #B0E0E6");
         root.setHgap(20);
         root.setVgap(40);
-        root.getColumnConstraints().add(new ColumnConstraints(250));
+        root.getColumnConstraints().add(new ColumnConstraints(300));
+        root.getColumnConstraints().add(new ColumnConstraints(150));
+        root.getColumnConstraints().add(new ColumnConstraints(300));
         root.getColumnConstraints().add(new ColumnConstraints(100));
-        root.getColumnConstraints().add(new ColumnConstraints(250));
-        root.getColumnConstraints().add(new ColumnConstraints(200));
 
         refreshmentScene = new Scene(root, 850, 500);
 
@@ -131,16 +135,18 @@ public class RefreshmentsPage extends Stage {
         Button addToBasket = new Button("Add To Basket");
         addToBasket.setEffect(ds);
 
-        addToBasket.setOnAction(new EventHandler<ActionEvent>() {
+        addToBasket.setOnAction(new EventHandler<ActionEvent>()  {
             @Override
             public void handle(ActionEvent event) {
 
                MainPage.setItems(tempObList);
-               System.out.println(MainPage.getItems());
+//               System.out.println(MainPage.getItems());
                //go to the next page
                 close();
                 BasketPage bp = new BasketPage();
                 bp.show();
+
+
             }
         });
 

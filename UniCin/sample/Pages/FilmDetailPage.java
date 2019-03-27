@@ -79,8 +79,8 @@ public class FilmDetailPage extends Stage{
         Text descriptionText = new Text();
         descriptionText.setText("Description:" + "\n" + film.getDescription() + "\n" + "\n" + "Certificate: "
                 + film.getCertificate() + "\n" + "\n" + "Runtime: " + film.getRuntime() + "\n" + "\n" + "Genres: "
-                + film.getGenres() + "\n" + "\n" + "Price: " + utility.formatCurrency(film.getPrice()) + "\n" + "\n" );
-      //  "Available Seats: " + theatre.getSeats());
+                + film.getGenres() + "\n" + "\n" + "Price: " + utility.formatCurrency(film.getPrice()) + "\n" + "\n");
+                //+ "Available Seats: " + theatre.getSeats()
         descriptionText.setFont(Font.font("Tahoma", FontWeight.NORMAL, 12));
         descriptionText.setWrappingWidth(200);
 
@@ -105,6 +105,8 @@ public class FilmDetailPage extends Stage{
         basketBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                //System.out.println(film);
+
                 Alert zeroAlert = new Alert(Alert.AlertType.ERROR);
 
                 if ((int)ticketSpinner.getValue() == 0) {
@@ -132,15 +134,6 @@ public class FilmDetailPage extends Stage{
                 System.out.println("hello");
             }
         });
-
-        Text ticketAmount = new Text();
-
-//        ListView similarFilmsList = new ListView(fc.filterFilmsByGenre(fc.getFilms(), fc.getFilms(),));
-//        obSimilarFilms = ;
-//        similarFilmsList.setItems(obSimilarFilms);
-//        System.out.println(obSimilarFilms + " genres");
-//        similarFilmsList.setOrientation(Orientation.VERTICAL);
-//        similarFilmsList.setPrefSize(300, 250);
 
         VBox ticketVb = new VBox(10);
         ticketVb.setAlignment(Pos.CENTER);

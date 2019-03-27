@@ -15,6 +15,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -25,6 +26,8 @@ import javafx.stage.Stage;
 import javafx.scene.control.ListView;
 import sample.Basket;
 import sample.Film;
+import sample.Item;
+import sample.Utility;
 
 /**
  * Created by u1257802 on 25/03/2019.
@@ -34,19 +37,24 @@ public class BasketPage extends Stage {
     private Scene basketScene;
     private DropShadow ds;
     private Film film;
+    private int numberOfTickets;
+    private Utility utility = new Utility();
 
     public BasketPage(){
         initialize();
     }
 
     public BasketPage (Film film){
-        this.film = film;
+        //this.film = film;
         System.out.println(this.film.getTitle());
         initialize();
     }
 
     @FXML
     public void initialize() {
+        film = MainPage.getFilm();
+        numberOfTickets = MainPage.getNumberOfTickets();
+        //System.out.println("basket" + film.getTitle());
         GridPane root = new GridPane();
         root.setPadding(new Insets(15,15,15,15));
         root.setStyle("-fx-background-color: #B0E0E6");
@@ -82,8 +90,7 @@ public class BasketPage extends Stage {
         basketVbox.setAlignment(Pos.CENTER);
         basketVbox.getChildren().addAll(basketListLbl, basketList);
 
-//        Image filmImage = new Image("sample/images/" + film.getFilmImageUrl());
-//        ImageView filmImageView = new ImageView(filmImage);
+       // Label filmTitle = new Label(film.getTitle());
 
         Button backBtn = new Button("Back to Film Options");
         backBtn.setEffect(ds);
@@ -93,7 +100,7 @@ public class BasketPage extends Stage {
             public void handle(ActionEvent event) {
                 Alert backConfirmation = new Alert(Alert.AlertType.CONFIRMATION);
                 backConfirmation.setTitle("Saved Basket");
-                backConfirmation.setHeaderText("Your current items will be saved");
+                backConfirmation.setHeaderText("You will lose your current items in your basket");
                 backConfirmation.showAndWait();
 
                 close();
@@ -135,14 +142,48 @@ public class BasketPage extends Stage {
             }
         });
 
-        VBox basketOptionsVbox = new VBox(15);
-        basketOptionsVbox.setAlignment(Pos.CENTER);
-        basketOptionsVbox.getChildren().addAll(backBtn, payByCashBtn, payByCardBtn);
+        HBox basketOptionsHbox = new HBox(15);
+        basketOptionsHbox.setAlignment(Pos.CENTER);
+        basketOptionsHbox.getChildren().addAll(backBtn, payByCashBtn, payByCardBtn);
+
+        Image filmImage = new Image("sample/images/" + film.getFilmImageUrl());
+        ImageView filmImageView = new ImageView(filmImage);
+
+        Text descriptionText = new Text("Film Title: "  + "\n" + film.getTitle() + "\n" + "\n" + "Description:" + "\n" +
+                film.getDescription() + "\n" + "\n" + "Certificate: " + film.getCertificate() + "\n" + "\n" +
+                "Runtime: " + film.getRuntime() + "\n" + "\n" + "Genres: " + film.getGenres());
+        //  "Available Seats: " + theatre.getSeats()););
+        descriptionText.setFont(Font.font("Tahoma", FontWeight.NORMAL, 12));
+        descriptionText.setWrappingWidth(400);
+
+
+        double totalRefreshementPrice = 0;
+        //totalRoderPrice += (film.getPrice() * numberOfTickets);
+        StringBuilder sb = new StringBuilder();
+        for (Item item : MainPage.getItems()){
+            totalRefreshementPrice += item.getPrice();
+            sb.append(item.getName() );
+            sb.append(utility.formatCurrency(item.getPrice()));
+            sb.append("\n");
+        }
+
+
+        System.out.println(totalRefreshementPrice);
+        System.out.println(sb);
+
+        Text ticketInfoText = new Text("Amount of Tickets Booked: " + MainPage.getNumberOfTickets() + "\n" + "\n" +
+                "Price per Ticket: " + utility.formatCurrency(film.getPrice()) + "\n" +"Total Ticket Amount: "
+                + utility.formatCurrency(MainPage.getNumberOfTickets() * MainPage.getFilm().getPrice()));
+
+        VBox ticketInfoVb = new VBox(15);
+        ticketInfoVb.setAlignment(Pos.BOTTOM_LEFT);
+        ticketInfoVb.getChildren().addAll(descriptionText, ticketInfoText);
 
         root.add(pageTitle,0,0,4,1);
-        root.add(basketVbox,0,1,1,3);
-        root.add(basketOptionsVbox, 2,3,1,1);
-
+        root.add(filmImageView,0,1,1,1);
+        root.add(basketOptionsHbox, 0,2,4,1);
+        //root.add(descriptionText,1,1,4,1);
+        root.add(ticketInfoVb, 1,1,4,1);
 
         setScene(basketScene);
     }

@@ -47,12 +47,16 @@ public class MainPage extends Application {
         return numberOfTickets;
     }
 
-    private int getTotalPrice(){
-        int total = 0;
-        for (Item item : MainPage.getItems()){
-            total += MainPage.getNumberOfTickets();
-        }
-        return total;
+//    public double totalPrice(){
+//        int total = 0;
+//        for (Item item : MainPage.getItems()){
+//            total += ();
+//        }
+//        return total;
+//    }
+
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
     public static void setNumberOfTickets(int totalPrice) {
