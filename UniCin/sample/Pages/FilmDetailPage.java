@@ -98,46 +98,43 @@ public class FilmDetailPage extends Stage{
                 (0, 20, 0);
         ticketSpinner.setValueFactory(ticketAmountFactory);
 
-        Button basketBtn = new Button();
-        basketBtn.setEffect(ds);
-        basketBtn.setText("Add to Basket");
+        Button addToBasketBtn = new Button();
+        addToBasketBtn.setEffect(ds);
+        addToBasketBtn.setText("Add to Basket");
 
-        basketBtn.setOnAction(new EventHandler<ActionEvent>() {
+        addToBasketBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                //System.out.println(film);
-
                 Alert zeroAlert = new Alert(Alert.AlertType.ERROR);
 
                 if ((int)ticketSpinner.getValue() == 0) {
                     zeroAlert.setHeaderText("Please select an amount higher than 0 to add to basket");
                     zeroAlert.showAndWait();
+                    zeroAlert.close();
                 }else{
                     int numberOfTickets = ((int)ticketSpinner.getValue());
-
                     MainPage.setNumberOfTickets(numberOfTickets);
 
-                    System.out.println(MainPage.getNumberOfTickets());
-                    System.out.println(MainPage.getNumberOfTickets() * MainPage.getFilm().getPrice());
-
+                    Alert basketOptions = new Alert(Alert.AlertType.CONFIRMATION);
+                    basketOptions.setTitle("Add to Basket");
+                    basketOptions.setContentText("You will now be directed to the Refreshment page" + "\n" +
+                            "If you select cancel your tickets will not be added to the basket");
+                    basketOptions.showAndWait();
+                    if (basketOptions.getResult() == ButtonType.OK){
+                        close();
+                        RefreshmentsPage rp = new RefreshmentsPage(item);
+                        rp.show();
+                    } else {
+                        basketOptions.close();
+                        System.out.println(MainPage.getItems());
+                    }
                 }
-                System.out.println((int)ticketSpinner.getValue());
-            Alert basketOptions = new Alert(Alert.AlertType.CONFIRMATION);
-            basketOptions.setTitle("Add to Basket");
-            basketOptions.setContentText("You will now be directed to the Refreshment page");
-                basketOptions.showAndWait();
-
-                close();
-                RefreshmentsPage rp = new RefreshmentsPage(item);
-                rp.show();
-
-                System.out.println("hello");
             }
         });
 
         VBox ticketVb = new VBox(10);
         ticketVb.setAlignment(Pos.CENTER);
-        ticketVb.getChildren().addAll(selectAmountLbl, ticketSpinner, maxAmountMes, basketBtn);
+        ticketVb.getChildren().addAll(selectAmountLbl, ticketSpinner, maxAmountMes, addToBasketBtn);
 
         VBox filmVb= new VBox(10);
         filmVb.setAlignment(Pos.CENTER);
@@ -153,16 +150,16 @@ public class FilmDetailPage extends Stage{
             @Override
             public void handle(ActionEvent event) {
                 Alert backConfirmation = new Alert(Alert.AlertType.CONFIRMATION);
-                backConfirmation.setTitle("No tickets will be added to basket");
                 backConfirmation.setHeaderText("Tickets will not be added to the basket unless the 'Add To Basket'" +
                         " button is pressed");
                 backConfirmation.showAndWait();
-
-                close();
-
-                FilmPage fp = new FilmPage();
-                fp.show();
-                System.out.println("hello");
+                if (backConfirmation.getResult() == ButtonType.OK) {
+                    close();
+                    FilmPage filmPage = new FilmPage();
+                    filmPage.show();
+                } else {
+                    backConfirmation.close();
+                }
             }
         });
 
