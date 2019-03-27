@@ -82,16 +82,6 @@ public class BasketPage extends Stage {
         basketList.setPrefSize(200, 300);
         basketList.setItems(FXCollections.observableArrayList(MainPage.getItems()));
 
-        Label basketListLbl = new Label("Order Summary");
-        basketListLbl.setTextFill(Color.color(0.4f, 0.4f, 1.0f));
-        basketListLbl.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
-
-        VBox basketVbox = new VBox();
-        basketVbox.setAlignment(Pos.CENTER);
-        basketVbox.getChildren().addAll(basketListLbl, basketList);
-
-       // Label filmTitle = new Label(film.getTitle());
-
         Button backBtn = new Button("Back to Film Options");
         backBtn.setEffect(ds);
 
@@ -121,7 +111,7 @@ public class BasketPage extends Stage {
                         "Otherwise your order will be cancelled");
                 payByCashConf.showAndWait();
 
-                close();
+                payByCashConf.close();
             }
         });
 
@@ -149,41 +139,57 @@ public class BasketPage extends Stage {
         Image filmImage = new Image("sample/images/" + film.getFilmImageUrl());
         ImageView filmImageView = new ImageView(filmImage);
 
-        Text descriptionText = new Text("Film Title: "  + "\n" + film.getTitle() + "\n" + "\n" + "Description:" + "\n" +
-                film.getDescription() + "\n" + "\n" + "Certificate: " + film.getCertificate() + "\n" + "\n" +
-                "Runtime: " + film.getRuntime() + "\n" + "\n" + "Genres: " + film.getGenres());
+        Text descriptionText = new Text("You are booking tickets for:" + "\n" + "\n" + film.getTitle() + "\n" + "\n"
+                + "Description:" + "\n" + film.getDescription() + "\n" + "\n" + "Certificate: " + film.getCertificate()
+                + "\n" + "\n" + "Runtime: " + film.getRuntime() + "\n" + "\n" + "Genres: " + film.getGenres());
         //  "Available Seats: " + theatre.getSeats()););
         descriptionText.setFont(Font.font("Tahoma", FontWeight.NORMAL, 12));
-        descriptionText.setWrappingWidth(400);
+        descriptionText.setWrappingWidth(250);
 
+        Label basketListLbl = new Label("Order Summary");
+        basketListLbl.setTextFill(Color.color(0.4f, 0.4f, 1.0f));
+        basketListLbl.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
 
-        double totalRefreshementPrice = 0;
-        //totalRoderPrice += (film.getPrice() * numberOfTickets);
+        double totalRefreshmentPrice = 0;
         StringBuilder sb = new StringBuilder();
         for (Item item : MainPage.getItems()){
-            totalRefreshementPrice += item.getPrice();
+            totalRefreshmentPrice += item.getPrice();
             sb.append(item.getName() );
             sb.append(utility.formatCurrency(item.getPrice()));
             sb.append("\n");
         }
 
+        double totalPrice = 0;
 
-        System.out.println(totalRefreshementPrice);
+        System.out.println(totalRefreshmentPrice);
         System.out.println(sb);
 
         Text ticketInfoText = new Text("Amount of Tickets Booked: " + MainPage.getNumberOfTickets() + "\n" + "\n" +
-                "Price per Ticket: " + utility.formatCurrency(film.getPrice()) + "\n" +"Total Ticket Amount: "
-                + utility.formatCurrency(MainPage.getNumberOfTickets() * MainPage.getFilm().getPrice()));
+                "Price per Ticket: " + utility.formatCurrency(film.getPrice()));
+        ticketInfoText.setFont(Font.font("Tahoma", FontWeight.NORMAL, 12));
+        ticketInfoText.setWrappingWidth(200);
+
+        Text orderInfoText = new Text("Total Ticket Amount: " + utility.formatCurrency(
+                MainPage.getNumberOfTickets() * MainPage.getFilm().getPrice()) + "\n" + "\n" + sb +
+                "\n" + "Final Order Total: " + (MainPage.getNumberOfTickets() * MainPage.getFilm().getPrice())
+                + MainPage.getItems());
+        orderInfoText.setFont(Font.font("Tahoma", FontWeight.NORMAL, 12));
+        orderInfoText.setWrappingWidth(200);
 
         VBox ticketInfoVb = new VBox(15);
         ticketInfoVb.setAlignment(Pos.BOTTOM_LEFT);
         ticketInfoVb.getChildren().addAll(descriptionText, ticketInfoText);
 
+        VBox orderInfoVb = new VBox();
+        orderInfoVb.setAlignment(Pos.TOP_LEFT);
+        orderInfoVb.getChildren().addAll(basketListLbl, orderInfoText);
+
         root.add(pageTitle,0,0,4,1);
-        root.add(filmImageView,0,1,1,1);
+        root.add(filmImageView,1,1,1,1);
         root.add(basketOptionsHbox, 0,2,4,1);
         //root.add(descriptionText,1,1,4,1);
-        root.add(ticketInfoVb, 1,1,4,1);
+        root.add(ticketInfoVb, 0,1,1,1);
+        root.add(orderInfoVb, 2, 1,1,1);
 
         setScene(basketScene);
     }

@@ -30,6 +30,6 @@ public class Refreshment extends Item{
 
     @Override
     public String toString() {
-        return "Name: " + super.getName() + ", price: " + u.formatCurrency(super.getPrice());
+        return "Name: " + super.getName() + ", Price: " + u.formatCurrency(super.getPrice());
     }
 }
