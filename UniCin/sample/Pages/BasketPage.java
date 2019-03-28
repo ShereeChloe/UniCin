@@ -7,9 +7,7 @@ import javafx.fxml.FXML;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,7 +21,6 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import javafx.scene.control.ListView;
 import sample.Basket;
 import sample.Film;
 import sample.Item;
@@ -89,13 +86,15 @@ public class BasketPage extends Stage {
             @Override
             public void handle(ActionEvent event) {
                 Alert backConfirmation = new Alert(Alert.AlertType.CONFIRMATION);
-                backConfirmation.setTitle("Saved Basket");
                 backConfirmation.setHeaderText("You will lose your current items in your basket");
                 backConfirmation.showAndWait();
-
-                close();
-                FilmPage fp = new FilmPage();
-                fp.show();
+                if (backConfirmation.getResult() == ButtonType.OK){
+                    close();
+                    FilmPage filmPage = new FilmPage();
+                    filmPage.show();
+                } else {
+                    backConfirmation.close();
+                }
             }
         });
 
@@ -139,6 +138,10 @@ public class BasketPage extends Stage {
         Image filmImage = new Image("sample/images/" + film.getFilmImageUrl());
         ImageView filmImageView = new ImageView(filmImage);
 
+        Label bookingLbl = new Label("Your Booking");
+        bookingLbl.setTextFill(Color.color(0.4f, 0.4f, 1.0f));
+        bookingLbl.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+
         Text descriptionText = new Text("You are booking tickets for:" + "\n" + "\n" + film.getTitle() + "\n" + "\n"
                 + "Description:" + "\n" + film.getDescription() + "\n" + "\n" + "Certificate: " + film.getCertificate()
                 + "\n" + "\n" + "Runtime: " + film.getRuntime() + "\n" + "\n" + "Genres: " + film.getGenres());
@@ -178,9 +181,9 @@ public class BasketPage extends Stage {
 
         VBox ticketInfoVb = new VBox(15);
         ticketInfoVb.setAlignment(Pos.BOTTOM_LEFT);
-        ticketInfoVb.getChildren().addAll(descriptionText, ticketInfoText);
+        ticketInfoVb.getChildren().addAll(bookingLbl, descriptionText, ticketInfoText);
 
-        VBox orderInfoVb = new VBox();
+        VBox orderInfoVb = new VBox(15);
         orderInfoVb.setAlignment(Pos.TOP_LEFT);
         orderInfoVb.getChildren().addAll(basketListLbl, orderInfoText);
 

@@ -13,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -75,6 +76,10 @@ public class RefreshmentsPage extends Stage {
         pageTitle.setEffect(ds);
         pageTitle.setCache(true);
 
+        Label refreshmentListLbl = new Label("Available Refreshments");
+        refreshmentListLbl.setTextFill(Color.color(0.4f, 0.4f, 1.0f));
+        refreshmentListLbl.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+
         ListView refreshmentList = new ListView(ic.getItems());
         obListItems = ic.getItems();
         refreshmentList.setItems(obListItems);
@@ -85,17 +90,18 @@ public class RefreshmentsPage extends Stage {
         Button addBtn = new Button("Add Item");
         addBtn.setEffect(ds);
 
+        Label tempListLbl = new Label("Your Refreshments");
+        tempListLbl.setTextFill(Color.color(0.4f, 0.4f, 1.0f));
+        tempListLbl.setFont(Font.font("Tahoma", FontWeight.BOLD, 18));
+
         ListView tempList = new ListView();
 
         addBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
                 Item item = (Item) refreshmentList.getSelectionModel().getSelectedItem();
                 if(item != null){
                     tempObList.add(item);
-
-                    //System.out.println(tempObList);
 
                     tempList.setItems(FXCollections.observableArrayList(tempObList));
                 }else{
@@ -114,12 +120,9 @@ public class RefreshmentsPage extends Stage {
         removeBtn.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-
                 Item item = (Item) tempList.getSelectionModel().getSelectedItem();
                 if(item != null){
                     tempObList.remove(item);
-
-                    //System.out.println(tempObList);
 
                     tempList.setItems(FXCollections.observableArrayList(tempObList));
                 }else{
@@ -140,13 +143,9 @@ public class RefreshmentsPage extends Stage {
             public void handle(ActionEvent event) {
 
                MainPage.setItems(tempObList);
-//               System.out.println(MainPage.getItems());
-               //go to the next page
                 close();
                 BasketPage bp = new BasketPage();
                 bp.show();
-
-
             }
         });
 
@@ -154,14 +153,22 @@ public class RefreshmentsPage extends Stage {
         buttonsVbox.setAlignment(Pos.CENTER);
         buttonsVbox.getChildren().addAll(addBtn, removeBtn, addToBasket);
 
+        VBox refreshmentVbox = new VBox(20);
+        refreshmentVbox.setAlignment(Pos.TOP_CENTER);
+        refreshmentVbox.getChildren().addAll(refreshmentListLbl, refreshmentList);
+
+        VBox refreahmentOrderVbox = new VBox(20);
+        refreahmentOrderVbox.setAlignment(Pos.TOP_CENTER);
+        refreahmentOrderVbox.getChildren().addAll(tempListLbl, tempList);
+
         Image popcorn = new Image("sample/images/PopcornBlue.jpg", 150, 200,
                 true, true);
         ImageView pop = new ImageView(popcorn);
 
         root.add(pageTitle,0,0,5,1);
-        root.add(refreshmentList, 0,1,1, 1);
+        root.add(refreshmentVbox, 0,1,1, 1);
         root.add(buttonsVbox, 1, 1, 1,1);
-        root.add(tempList, 2, 1,1,1);
+        root.add(refreahmentOrderVbox, 2, 1,1,1);
         root.add(pop,3,1,1,2);
 
         setScene(refreshmentScene);

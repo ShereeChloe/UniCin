@@ -126,7 +126,6 @@ public class FilmDetailPage extends Stage{
                         rp.show();
                     } else {
                         basketOptions.close();
-                        System.out.println(MainPage.getItems());
                     }
                 }
             }
